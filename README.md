@@ -7,6 +7,7 @@ PythonDbgは、Pythonスクリプトのデバッグを支援するためのツ�
 - 関数呼び出しのトレース
 - 行の実行のトレース
 - ローカル変数とグローバル変数の表示
+- myCuteDebuggerクラスを使用したデバッグセッションの開始
 
 ## 使い方
 
@@ -16,6 +17,16 @@ PythonDbgは、Pythonスクリプトのデバッグを支援するためのツ�
 
 ```bash
 python dbg2.py <script_to_debug.py>
+```
+
+または、myCuteDebuggerクラスを使用してデバッグセッションを開始することもできます。
+
+```python
+import dbg2
+
+if __name__ == "__main__":
+    myCuteDbgger = dbg2.myCuteDebugger()
+    myCuteDbgger.start_debugger()
 ```
 
 これにより、スクリプトの実行が開始され、各関数呼び出しと行の実行がトレースされます。各ステップで、"Press Enter to continue"と表示されるので、Enterキーを押すことで次のステップに進むことができます。
