@@ -2,7 +2,6 @@ import sys
 
 def trace_calls(frame, event, arg):
     global activated_debugger
-    global script_to_debug
     if event != 'call':
         print('Event is not call')
         return
@@ -19,7 +18,6 @@ def trace_calls(frame, event, arg):
 
 def trace_lines(frame, event, arg):
     global activated_debugger
-    global script_to_debug
     if event != 'line':
         print('Event is not line')
         return
@@ -42,10 +40,10 @@ def trace_lines(frame, event, arg):
     input("Press Enter to continue")
     return trace_lines
 
-def start_debugger(script):
+def start_debugger():
     sys.settrace(trace_calls)
-    with open(script) as f:
-        code = compile(f.read(), script, 'exec')
+    with open(script_to_debug) as f:
+        code = compile(f.read(), script_to_debug, 'exec')
         exec(code, {}, {})
 
 if __name__ == "__main__":
@@ -56,5 +54,5 @@ if __name__ == "__main__":
     script_to_debug = sys.argv[1]
     # Trick the target script with new sys.argv
     sys.argv = sys.argv[1:]
-    start_debugger(script_to_debug)
+    start_debugger()
 
