@@ -24,9 +24,13 @@ class myCuteDebugger:
             print('Mushi this line...Game is not started yet!')
             return self.trace_callback
         
+        self.my_cute_handler(filename, func_name, line_no, event, locals_dict, globals_dict)
+        
+        return self.trace_callback
+    
+    def my_cute_handler(self, filename, func_name, line_no, event, locals_dict, globals_dict):
         print(f"Executing line {line_no} of {filename} in {func_name}, Event: {event}")
         input("Press Enter to continue")
-        return self.trace_callback
     
     def start_debugger(self, script_filename):
         self.script_to_debug = script_filename
