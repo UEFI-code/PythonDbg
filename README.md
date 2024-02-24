@@ -8,6 +8,7 @@ PythonDbgは、Pythonスクリプトのデバッグを支援するためのツ�
 - 行の実行のトレース
 - ローカル変数とグローバル変数の表示
 - myCuteDebuggerクラスを使用したデバッグセッションの開始
+- カスタムハンドラの登録
 
 ## 使い方
 
@@ -23,9 +24,15 @@ python dbg2.py <script_to_debug.py>
 
 ```python
 import dbg2
+import types
+
+def my_new_cute_handler(self, filename, func_name, line_no, event, locals_dict, globals_dict):
+    # Your custom logic here
+    pass
 
 if __name__ == "__main__":
     myCuteDbgger = dbg2.myCuteDebugger()
+    myCuteDbgger.my_cute_handler = types.MethodType(my_new_cute_handler, myCuteDbgger)
     myCuteDbgger.start_debugger()
 ```
 
