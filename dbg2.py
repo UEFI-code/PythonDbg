@@ -34,7 +34,7 @@ class myCuteDebugger:
     
     def start_debugger(self):
         if len(sys.argv) < 2:
-            print("Usage: python debugger.py <script_to_debug.py> <arg1> <arg2> ...")
+            print(f"Usage: python {sys.argv[0]} <script_to_debug.py> <arg1> <arg2> ...")
             sys.exit(1)
         self.script_to_debug = sys.argv[1]
         # Trick the target script with new sys.argv
@@ -50,4 +50,3 @@ class myCuteDebugger:
 if __name__ == "__main__":
     myCuteDbgger = myCuteDebugger()
     myCuteDbgger.start_debugger()
-
