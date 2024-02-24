@@ -15,7 +15,7 @@ PythonDbgは、Pythonスクリプトのデバッグを支援するためのツ�
 3. コマンドラインから以下のコマンドを実行します。
 
 ```bash
-python dbg.py <script_to_debug.py>
+python dbg2.py <script_to_debug.py>
 ```
 
 これにより、スクリプトの実行が開始され、各関数呼び出しと行の実行がトレースされます。各ステップで、"Press Enter to continue"と表示されるので、Enterキーを押すことで次のステップに進むことができます。
