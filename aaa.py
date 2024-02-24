@@ -1,3 +1,7 @@
+import sys
+
+print(f'args: {sys.argv}')
+
 def print_hello(i):
     print(f"Hello {i}")
 
