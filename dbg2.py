@@ -7,10 +7,10 @@ class myCuteDebugger:
 
     def trace_calls(self, frame, event, arg):
         if event != 'call':
-            print('Event is not call')
+            print(f'Event is not call: {event}!')
             return
         if not self.activated_debugger:
-            print('Mushi this call...')
+            print('Mushi this call...Game is not started yet!')
             return self.trace_lines
         co = frame.f_code
         filename = co.co_filename
@@ -22,7 +22,7 @@ class myCuteDebugger:
     
     def trace_lines(self, frame, event, arg):
         if event != 'line':
-            print('Event is not line')
+            print(f'Event is not line: {event}!')
             return
         co = frame.f_code
         filename = co.co_filename
@@ -36,7 +36,7 @@ class myCuteDebugger:
             self.activated_debugger = True
         
         if not self.activated_debugger:
-            print('Mushi this line...')
+            print('Mushi this line...Game is not started yet!')
             return self.trace_lines
         #print(f"Executing line {line_no} of {filename} in {func_name}. Locals: {locals_dict}, Globals: {globals_dict}")
         print(f"Executing line {line_no} of {filename} in {func_name}")
