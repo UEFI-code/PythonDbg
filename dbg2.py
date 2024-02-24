@@ -34,6 +34,8 @@ class myCuteDebugger:
         with open(self.script_to_debug) as f:
             code = compile(f.read(), self.script_to_debug, 'exec')
             exec(code, {}, {})
+            print('Goodbye!')
+            sys.settrace(None)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
