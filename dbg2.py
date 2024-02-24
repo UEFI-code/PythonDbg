@@ -25,15 +25,21 @@ class myCuteDebugger:
             return self.trace_callback
         
         self.my_cute_handler(filename, func_name, line_no, event, locals_dict, globals_dict)
-        
+
         return self.trace_callback
     
     def my_cute_handler(self, filename, func_name, line_no, event, locals_dict, globals_dict):
         print(f"Executing line {line_no} of {filename} in {func_name}, Event: {event}")
         input("Press Enter to continue")
     
-    def start_debugger(self, script_filename):
-        self.script_to_debug = script_filename
+    def start_debugger(self):
+        if len(sys.argv) < 2:
+            print("Usage: python debugger.py <script_to_debug.py> <arg1> <arg2> ...")
+            sys.exit(1)
+        self.script_to_debug = sys.argv[1]
+        # Trick the target script with new sys.argv
+        sys.argv = sys.argv[1:]
+        # Ok, let's start debugging
         sys.settrace(self.trace_callback)
         with open(self.script_to_debug) as f:
             code = compile(f.read(), self.script_to_debug, 'exec')
@@ -42,11 +48,6 @@ class myCuteDebugger:
             sys.settrace(None)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python debugger.py <script_to_debug.py>")
-        sys.exit(1)
-    script_to_debug = sys.argv[1]
-    # Trick the target script with new sys.argv
-    sys.argv = sys.argv[1:]
-    myCuteDebugger().start_debugger(script_to_debug)
+    myCuteDbgger = myCuteDebugger()
+    myCuteDbgger.start_debugger()
 
