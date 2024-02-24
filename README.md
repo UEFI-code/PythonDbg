@@ -20,6 +20,8 @@ PythonDbgは、Pythonスクリプトのデバッグを支援するためのツ�
 python dbg2.py <script_to_debug.py>
 ```
 
+これにより、スクリプトの実行が開始され、各関数呼び出しと行の実行がトレースされます。各ステップで、"Press Enter to continue"と表示されるので、Enterキーを押すことで次のステップに進むことができます。
+
 または、myCuteDebuggerクラスを使用してデバッグセッションを開始することもできます。
 
 ```python
@@ -35,8 +37,6 @@ if __name__ == "__main__":
     myCuteDbgger.my_cute_handler = types.MethodType(my_new_cute_handler, myCuteDbgger)
     myCuteDbgger.start_debugger()
 ```
-
-これにより、スクリプトの実行が開始され、各関数呼び出しと行の実行がトレースされます。各ステップで、"Press Enter to continue"と表示されるので、Enterキーを押すことで次のステップに進むことができます。
 
 ## 注意事項
 
